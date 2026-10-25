@@ -1,29 +1,34 @@
+# Environment variables and secrets
 .env
 .env.*
 !.env.example
 !.env.sample
+
+# Python
 __pycache__/
 *.py[cod]
 .venv/
 venv/
+
+# Databases and generated data
+*.db
+*.sqlite
+*.sqlite3
+backend/uploads/
+backend/reports/
+backend/data/vector_store/
+
+# Frontend dependencies and build output
 node_modules/
 dist/
 build/
 .next/
 .vite/
 coverage/
+
+# Logs
 *.log
+
+# Operating system files
 .DS_Store
 Thumbs.db
-.env
-.env.*
-!.env.example
-!.env.sample
-
-node_modules/
-dist/
-build/
-.venv/
-venv/
-__pycache__/
-*.py[cod]
