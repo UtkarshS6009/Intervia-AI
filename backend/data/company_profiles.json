@@ -1,0 +1,36 @@
+{
+  "companies": [
+    {
+      "id": "google",
+      "name": "Google",
+      "logo": "🔍",
+      "focus_areas": ["Algorithms & Data Structures", "Distributed Systems", "Googleyness & Leadership"],
+      "difficulty": "Hard",
+      "style": "Highly analytical, deep complexity analysis (Big-O), emphasis on edge cases and scalability."
+    },
+    {
+      "id": "amazon",
+      "name": "Amazon",
+      "logo": "📦",
+      "focus_areas": ["16 Leadership Principles", "System Architecture", "Operational Excellence"],
+      "difficulty": "Medium to Hard",
+      "style": "Deep STAR-based behavioral interrogation, Customer Obsession, High-level system scalability."
+    },
+    {
+      "id": "microsoft",
+      "name": "Microsoft",
+      "logo": "🪟",
+      "focus_areas": ["Data Structures", "Design Patterns", "Growth Mindset", "Collaborative Problem Solving"],
+      "difficulty": "Medium",
+      "style": "Structured coding interviews, practical object-oriented design, clarifying ambiguous requirements."
+    },
+    {
+      "id": "startup",
+      "name": "High-Growth Startup",
+      "logo": "🚀",
+      "focus_areas": ["Full-Stack Velocity", "Product Intuition", "Modern Frameworks", "Ownership"],
+      "difficulty": "Medium",
+      "style": "Hands-on coding, rapid prototyping, pragmatic decision making, architectural trade-offs."
+    }
+  ]
+}

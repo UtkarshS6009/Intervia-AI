@@ -1,0 +1,49 @@
+{
+  "categories": {
+    "Programming Languages": [
+      "Python", "JavaScript", "TypeScript", "Java", "C++", "C#", "Go", "Rust", "Ruby", "PHP", "Swift", "Kotlin", "Scala", "R", "SQL", "Bash", "Shell"
+    ],
+    "Web Development": [
+      "React", "Next.js", "Vue.js", "Angular", "Node.js", "Express", "FastAPI", "Django", "Flask", "Spring Boot", "ASP.NET", "GraphQL", "REST API", "Tailwind CSS", "HTML5", "CSS3", "Redux", "WebSockets"
+    ],
+    "Databases": [
+      "PostgreSQL", "MySQL", "SQLite", "MongoDB", "Redis", "Elasticsearch", "Cassandra", "DynamoDB", "Firebase Firestore", "Supabase", "Neo4j", "Snowflake"
+    ],
+    "Cloud & Infrastructure": [
+      "AWS", "Google Cloud (GCP)", "Microsoft Azure", "Terraform", "Kubernetes", "Docker", "CI/CD", "GitHub Actions", "Nginx", "Cloudflare", "Serverless", "Ansible"
+    ],
+    "DevOps & MLOps": [
+      "Docker", "Kubernetes", "Prometheus", "Grafana", "MLflow", "Kubeflow", "DVC", "Airflow", "Kafka", "RabbitMQ", "Helm", "GitOps"
+    ],
+    "Machine Learning & Data Science": [
+      "Scikit-Learn", "Pandas", "NumPy", "SciPy", "XGBoost", "LightGBM", "Random Forest", "Logistic Regression", "Feature Engineering", "Data Cleaning", "Matplotlib", "Seaborn"
+    ],
+    "Deep Learning & AI": [
+      "PyTorch", "TensorFlow", "Keras", "CNN", "RNN", "LSTM", "Transformers", "BERT", "ResNet", "Attention Mechanism", "Diffusion Models", "Vision Transformers (ViT)"
+    ],
+    "NLP & Large Language Models": [
+      "spaCy", "NLTK", "Hugging Face", "LangChain", "LlamaIndex", "Tokenization", "Named Entity Recognition (NER)", "Embeddings", "Sentence Transformers", "RAG", "Prompt Engineering", "Fine-Tuning", "LoRA", "Vector Databases"
+    ],
+    "Generative AI": [
+      "Gemini API", "OpenAI GPT", "Claude", "Ollama", "Groq", "FAISS", "ChromaDB", "Pinecone", "Function Calling", "Semantic Search", "Guardrails", "Agents"
+    ],
+    "Data Structures & Algorithms": [
+      "Arrays & Strings", "Hash Tables", "Linked Lists", "Trees & BST", "Graphs", "Binary Search", "Dynamic Programming", "Recursion", "Sorting & Searching", "Sliding Window", "Two Pointers", "Greedy Algorithms"
+    ],
+    "System Design": [
+      "High-Level Architecture", "Microservices", "Load Balancing", "Caching Strategies", "Database Sharding", "CAP Theorem", "Message Queues", "Rate Limiting", "Consistent Hashing", "Event-Driven Architecture", "API Gateway"
+    ],
+    "Tools & Platforms": [
+      "Git", "GitHub", "Linux", "VS Code", "Postman", "Jira", "Figma", "Vite", "Webpack", "npm", "yarn", "pnpm"
+    ]
+  },
+  "skill_relations": {
+    "Python": ["FastAPI", "Django", "NumPy", "Pandas", "PyTorch", "Scikit-Learn"],
+    "React": ["JavaScript", "TypeScript", "Next.js", "Redux", "Tailwind CSS"],
+    "Machine Learning": ["Python", "Scikit-Learn", "Feature Engineering", "Pandas", "Model Evaluation"],
+    "NLP": ["spaCy", "Transformers", "BERT", "Embeddings", "Hugging Face", "Tokenization"],
+    "Generative AI": ["RAG", "Vector Databases", "Prompt Engineering", "LangChain", "FAISS", "Embeddings"],
+    "SQL": ["PostgreSQL", "MySQL", "Indexing", "Query Optimization", "Window Functions"],
+    "Docker": ["Kubernetes", "CI/CD", "Linux", "Microservices"]
+  }
+}

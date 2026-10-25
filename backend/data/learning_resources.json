@@ -1,0 +1,102 @@
+{
+  "resources": {
+    "SQL Joins & Aggregations": [
+      {
+        "type": "documentation",
+        "title": "PostgreSQL Official Documentation: Queries & Joins",
+        "url": "https://www.postgresql.org/docs/current/tutorial-join.html",
+        "description": "Comprehensive explanation of table joins, cross joins, and Cartesian products."
+      },
+      {
+        "type": "practice",
+        "title": "LeetCode SQL 50 Study Plan",
+        "url": "https://leetcode.com/studyplan/top-sql-50/",
+        "description": "50 high-yield SQL interview problems covering joins, aggregates, and window functions."
+      },
+      {
+        "type": "course",
+        "title": "Mode Analytics SQL Tutorial: Advanced Joins",
+        "url": "https://mode.com/sql-tutorial/sql-joins/",
+        "description": "Interactive browser exercises for mastering multi-table data manipulation."
+      }
+    ],
+    "Dynamic Programming": [
+      {
+        "type": "documentation",
+        "title": "NeetCode Dynamic Programming Roadmap",
+        "url": "https://neetcode.io/roadmap",
+        "description": "Visual guides and code walk-throughs for 1D and 2D dynamic programming patterns."
+      },
+      {
+        "type": "practice",
+        "title": "LeetCode Top Interview 150 - DP Questions",
+        "url": "https://leetcode.com/studyplan/top-interview-150/",
+        "description": "Master Coin Change, Longest Increasing Subsequence, and Word Break."
+      }
+    ],
+    "System Design & Scalability": [
+      {
+        "type": "documentation",
+        "title": "The System Design Primer (Donne Martin)",
+        "url": "https://github.com/donnemartin/system-design-primer",
+        "description": "The gold-standard open-source guide to designing scalable, reliable systems."
+      },
+      {
+        "type": "course",
+        "title": "ByteByteGo - System Design Fundamentals",
+        "url": "https://bytebytego.com/",
+        "description": "Visual architecture diagrams for URL shortener, rate limiters, and distributed queues."
+      }
+    ],
+    "Machine Learning & Model Evaluation": [
+      {
+        "type": "documentation",
+        "title": "Scikit-Learn Guide: Model Evaluation & Metrics",
+        "url": "https://scikit-learn.org/stable/modules/model_evaluation.html",
+        "description": "In-depth breakdown of Precision-Recall curves, ROC-AUC, Log Loss, and Cross-Validation."
+      },
+      {
+        "type": "course",
+        "title": "Fast.ai Practical Deep Learning for Coders",
+        "url": "https://course.fast.ai/",
+        "description": "Hands-on machine learning, embeddings, and computer vision."
+      }
+    ],
+    "NLP & Large Language Models": [
+      {
+        "type": "documentation",
+        "title": "Hugging Face NLP Course",
+        "url": "https://huggingface.co/learn/nlp-course",
+        "description": "Complete guide to tokenization, Transformers, fine-tuning, and semantic embeddings."
+      },
+      {
+        "type": "documentation",
+        "title": "LangChain & LlamaIndex Official Documentation",
+        "url": "https://docs.langchain.com/",
+        "description": "Building production RAG pipelines, chunking strategies, and vector index retrieval."
+      }
+    ],
+    "Python Internals & Asynchronous Programming": [
+      {
+        "type": "documentation",
+        "title": "Python Official Docs: Asyncio & Concurrency",
+        "url": "https://docs.python.org/3/library/asyncio.html",
+        "description": "Mastering the event loop, coroutines, tasks, and thread pool executors."
+      },
+      {
+        "type": "course",
+        "title": "Fluent Python (Luciano Ramalho) Concepts",
+        "url": "https://docs.python.org/3/reference/datamodel.html",
+        "description": "Dunder methods, descriptors, generators, and Python memory model."
+      }
+    ],
+    "Behavioral & STAR Method": [
+      {
+        "type": "guide",
+        "title": "Harvard Career Services: Behavioral Interviewing STAR Method",
+        "url": "https://careerservices.fas.harvard.edu/",
+        "description": "Structuring impactful stories for leadership, conflict resolution, and technical setbacks."
+      }
+    ]
+  }
+}
