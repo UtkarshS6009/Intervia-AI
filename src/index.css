@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    @apply bg-slate-950 text-slate-200 antialiased min-h-screen overflow-x-hidden;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  ::selection {
+    @apply bg-indigo-500/30 text-indigo-200;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-slate-900/70 backdrop-blur-md border border-slate-800 shadow-xl;
+  }
+}
+
+/* --- Premium Custom Scrollbar --- */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-800 rounded-full border-[1.5px] border-slate-950;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-slate-700;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  @apply bg-slate-700 border-slate-900;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  @apply bg-slate-600;
+}
