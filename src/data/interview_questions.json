@@ -1,0 +1,171 @@
+[
+  {
+    "id": "py-001",
+    "category": "Python",
+    "topic": "Memory & Performance",
+    "difficulty": "Medium",
+    "question": "Explain Python's GIL (Global Interpreter Lock) and how it affects multi-threaded vs multi-process execution in CPU-bound vs I/O-bound tasks.",
+    "expected_concepts": ["GIL purpose", "Thread safety in CPython", "CPU-bound vs IO-bound", "multiprocessing module", "asyncio"],
+    "sample_answer": "The Global Interpreter Lock (GIL) is a mutex in CPython that prevents multiple native threads from executing Python bytecodes concurrently. For I/O-bound tasks, threads release the GIL while waiting for network or disk operations, so threading provides concurrency. However, for CPU-bound tasks, multiple threads cannot run in parallel across CPU cores. To achieve true parallelism in CPU-intensive tasks, we use the `multiprocessing` module or native C/Rust extensions that release the GIL.",
+    "follow_up_questions": [
+      "How does Python 3.12+ free-threaded mode (PEP 703) impact GIL-free execution?",
+      "When would you choose `asyncio` over `multiprocessing`?"
+    ]
+  },
+  {
+    "id": "py-002",
+    "category": "Python",
+    "topic": "Generators & Memory",
+    "difficulty": "Easy",
+    "question": "What are Python generators, how do they differ from normal functions, and why are they advantageous for large datasets?",
+    "expected_concepts": ["yield keyword", "Iterator protocol", "Lazy evaluation", "Memory efficiency", "State retention"],
+    "sample_answer": "Generators are functions that return an iterator and yield items one at a time using the `yield` keyword instead of returning a full collection with `return`. They execute lazily, consuming memory only for the current element rather than holding millions of objects in RAM, making them ideal for streaming big data, reading gigabyte log files, or infinite sequences.",
+    "follow_up_questions": [
+      "How does generator delegation with `yield from` work?",
+      "Can a generator accept values from the caller? (hint: `generator.send()`)"
+    ]
+  },
+  {
+    "id": "sql-001",
+    "category": "SQL",
+    "topic": "Joins & Aggregations",
+    "difficulty": "Medium",
+    "question": "Describe the functional differences between INNER JOIN, LEFT JOIN, and FULL OUTER JOIN. How do NULL values affect WHERE clauses versus ON clauses in outer joins?",
+    "expected_concepts": ["INNER vs LEFT vs FULL OUTER", "Handling unmatched rows", "NULL predicate evaluation", "ON vs WHERE filtering in outer joins"],
+    "sample_answer": "INNER JOIN returns rows with matching keys in both tables. LEFT JOIN returns all rows from the left table and matched rows from the right; unmatched right attributes become NULL. FULL OUTER JOIN returns all rows from both tables, filling NULLs where there is no match. In outer joins, predicates in the ON clause determine join eligibility before null-padding, whereas predicates in the WHERE clause filter after joining, often turning a LEFT JOIN into an accidental INNER JOIN if testing for non-null attributes.",
+    "follow_up_questions": [
+      "What is the difference between WHERE condition and HAVING condition in grouped queries?",
+      "How do Window Functions like ROW_NUMBER() and RANK() differ?"
+    ]
+  },
+  {
+    "id": "sql-002",
+    "category": "SQL",
+    "topic": "Indexing & Query Optimization",
+    "difficulty": "Hard",
+    "question": "How do B-tree indexes work in relational databases like PostgreSQL, and what causes an index scan to degrade into a sequential table scan?",
+    "expected_concepts": ["B-tree balance", "Composite index column order (leftmost prefix)", "Index selectivity", "Functions on indexed columns", "EXPLAIN ANALYZE"],
+    "sample_answer": "B-Tree indexes maintain a balanced tree of ordered keys pointing to heap tuples, providing O(log N) lookups and efficient range scans. An index scan might be skipped if: the query optimizer estimates low selectivity (where scanning pages sequentially is cheaper than random I/O), functions or type casts are applied to indexed columns without functional indexes, wildcard searches start with `%`, or composite indexes omit the leading column.",
+    "follow_up_questions": [
+      "What is a Covering Index (Index-Only Scan)?",
+      "How do clustered indexes differ from non-clustered indexes?"
+    ]
+  },
+  {
+    "id": "ml-001",
+    "category": "Machine Learning",
+    "topic": "Model Evaluation & Bias-Variance",
+    "difficulty": "Medium",
+    "question": "How do you handle severe class imbalance in a fraud detection classification problem, and why is accuracy a misleading metric?",
+    "expected_concepts": ["Accuracy paradox", "Precision-Recall / F1-Score", "PR-AUC vs ROC-AUC", "Resampling (SMOTE, undersampling)", "Class weights / Focal Loss", "Cost-sensitive threshold tuning"],
+    "sample_answer": "In severe class imbalance (e.g., 99.9% legitimate, 0.1% fraud), a model predicting all transactions as legitimate achieves 99.9% accuracy while detecting zero fraud. We evaluate using Precision, Recall, F1-Score, and PR-AUC. To mitigate imbalance, techniques include cost-sensitive loss (class weighting, Focal Loss), resampling (SMOTE for minority or Tomek links for majority), anomaly detection framing, and tuning the decision threshold to penalize false negatives higher than false positives.",
+    "follow_up_questions": [
+      "Why is PR-AUC preferable over ROC-AUC when positive classes are extremely rare?",
+      "How does Random Forest handle imbalanced datasets natively?"
+    ]
+  },
+  {
+    "id": "ml-002",
+    "category": "Machine Learning",
+    "topic": "Ensemble Methods",
+    "difficulty": "Medium",
+    "question": "Compare Bagging and Boosting. How does Random Forest reduce overfitting compared to a single Decision Tree?",
+    "expected_concepts": ["Bagging vs Boosting", "Bootstrap aggregation", "Feature subsampling", "Variance reduction", "Sequential error correction (AdaBoost/GBM)"],
+    "sample_answer": "Bagging trains independent models in parallel on bootstrap samples and averages predictions to reduce variance without increasing bias. Random Forest enhances bagging by also randomly subsampling feature subsets at each split (decorrelating trees). Boosting trains models sequentially, where each subsequent model focuses on residuals/errors of previous models to reduce bias. Random Forest reduces overfitting because individual overfitted trees make uncorrelated errors that cancel out when averaged.",
+    "follow_up_questions": [
+      "What is Out-Of-Bag (OOB) error and how is it used in validation?",
+      "How does XGBoost prevent overfitting compared to standard Gradient Boosting?"
+    ]
+  },
+  {
+    "id": "dl-001",
+    "category": "Deep Learning",
+    "topic": "Transformers & Attention",
+    "difficulty": "Hard",
+    "question": "Explain the Scaled Dot-Product Attention mechanism in Transformer architectures. Why do we scale by the square root of key dimension dk?",
+    "expected_concepts": ["Query, Key, Value vectors", "Dot-product similarity", "Softmax normalization", "Scaling by sqrt(d_k)", "Vanishing gradients at large dot products"],
+    "sample_answer": "Scaled Dot-Product Attention computes `Attention(Q, K, V) = softmax(Q * K^T / sqrt(d_k)) * V`. Queries and Keys are multiplied to produce attention logits. We divide by `sqrt(d_k)` because for large vector dimensions, the dot products grow large in magnitude, pushing the softmax function into regions with extremely small gradients (vanishing gradient problem). Scaling keeps variance around 1, ensuring stable backpropagation.",
+    "follow_up_questions": [
+      "What is Multi-Head Attention and what representational benefit does it offer?",
+      "Why do decoder self-attention layers require causal masking?"
+    ]
+  },
+  {
+    "id": "nlp-001",
+    "category": "NLP & Large Language Models",
+    "topic": "RAG Architecture",
+    "difficulty": "Medium",
+    "question": "Walk through the architectural components of a Retrieval-Augmented Generation (RAG) system. How do you combat hallucination and retrieval noise?",
+    "expected_concepts": ["Document ingestion & chunking", "Embedding models", "Vector database / FAISS index", "Semantic retrieval & re-ranking", "Context augmentation in prompt", "Guardrails / hallucination check"],
+    "sample_answer": "A RAG system indexes documents by splitting them into semantic chunks, generating vector embeddings, and storing them in a vector database like FAISS. At query time, the user query is embedded, relevant chunks are retrieved via cosine similarity or hybrid search (BM25 + vectors), optionally re-ranked with a Cross-Encoder, and injected into the LLM system prompt as grounding context. To prevent hallucinations, we enforce strict citations, low temperature, system guardrails ('answer only from context'), and post-generation consistency checks.",
+    "follow_up_questions": [
+      "How do chunk size and chunk overlap affect retrieval quality?",
+      "What is HyDE (Hypothetical Document Embeddings) and when is it useful?"
+    ]
+  },
+  {
+    "id": "dsa-001",
+    "category": "Data Structures & Algorithms",
+    "topic": "Dynamic Programming",
+    "difficulty": "Hard",
+    "question": "Explain how to identify if a problem can be solved with Dynamic Programming. What is the difference between Top-Down Memoization and Bottom-Up Tabulation?",
+    "expected_concepts": ["Overlapping subproblems", "Optimal substructure", "Top-down memoization (recursive + cache)", "Bottom-up tabulation (iterative + table)", "Space optimization"],
+    "sample_answer": "DP applies when a problem exhibits: 1) Optimal Substructure (an optimal solution to the problem contains optimal solutions to its subproblems) and 2) Overlapping Subproblems (the same subproblems are solved repeatedly). Top-down uses recursion with a memoization table/hashmap, computing only subproblems required by the call tree. Bottom-up builds the table iteratively from base cases up, avoiding recursion stack limits and frequently enabling O(1) space optimization by storing only previous state variables.",
+    "follow_up_questions": [
+      "How would you solve the 0/1 Knapsack problem in O(W) space?",
+      "Explain the state transition for Longest Increasing Subsequence (LIS)."
+    ]
+  },
+  {
+    "id": "sys-001",
+    "category": "System Design",
+    "topic": "Scalability & Caching",
+    "difficulty": "Hard",
+    "question": "Design a distributed URL shortener (like bit.ly) supporting 100 million daily writes and 1 billion daily reads. What are your storage schema, encoding strategy, and caching tiers?",
+    "expected_concepts": ["Capacity estimation & read/write ratio", "Base62 encoding vs MD5 hash truncation", "Distributed ID generation (Snowflake/Counter)", "Database choice (NoSQL / Key-Value)", "Redis LRU cache for 80/20 read traffic", "Rate limiting"],
+    "sample_answer": "With a 10:1 read-heavy ratio, we need low-latency lookups. For short keys, 7 Base62 characters (`[0-9a-zA-Z]`) yield 62^7 ≈ 3.5 trillion unique URLs. We generate sequential 64-bit IDs using Twitter Snowflake or distributed ZooKeeper/Redis counter blocks, then encode to Base62 to guarantee collision-free keys. Storage uses a high-throughput distributed Key-Value or NoSQL store (Cassandra or DynamoDB). To handle 1B daily reads (~12,000 QPS), we place a Redis cluster with LRU eviction in front of the DB to cache the top 20% hottest URLs in memory.",
+    "follow_up_questions": [
+      "How do you handle custom alias URLs or expiration dates?",
+      "What happens if a Redis cache node fails?"
+    ]
+  },
+  {
+    "id": "hr-001",
+    "category": "HR & Behavioral",
+    "topic": "Conflict Resolution & Ownership",
+    "difficulty": "Medium",
+    "question": "Tell me about a time you had a significant technical disagreement with a senior teammate or team lead. How did you handle it and what was the outcome?",
+    "expected_concepts": ["STAR method (Situation, Task, Action, Result)", "Focus on data and user outcomes", "Active listening & empathy", "Disagree and commit principles", "Positive collaborative resolution"],
+    "sample_answer": "Using the STAR framework: During an API redesign, the lead proposed synchronous REST endpoints for batch video processing, while I advocated for an asynchronous event-driven queue with WebSockets to prevent timeouts. Instead of arguing opinion, I benchmarked both prototypes under 500 concurrent connections, documenting failure rates and latency. When the data showed 15% HTTP timeouts under spike load, the lead agreed to adopt the async queue with clear worker metrics. We delivered the project on time with 99.98% reliability, and established benchmarking as our team's standard dispute resolution protocol.",
+    "follow_up_questions": [
+      "What would you do if after presenting your data, the lead still insisted on their approach?",
+      "Describe how you handle sudden changes in product requirements right before release."
+    ]
+  },
+  {
+    "id": "comp-goog-001",
+    "category": "Company Specific",
+    "topic": "Google - Scalability & Engineering Excellence",
+    "difficulty": "Hard",
+    "question": "In a Google-scale distributed system, how would you design a real-time global autocomplete service with under 50ms latency P99 SLA?",
+    "expected_concepts": ["Trie data structure", "Distributed sharding by prefix", "In-memory caching at edge / CDN", "Offline trending aggregation via MapReduce/Spark", "Fault tolerance & geo-replication"],
+    "sample_answer": "To meet 50ms P99 globally, we deploy pre-computed Trie indices partitioned across edge points of presence (PoPs). Tries store top-K completions with frequencies directly at nodes to avoid deep traversals. Real-time logging asynchronously streams keystroke queries into a Kafka pipeline, where Spark/Flink aggregators continuously re-rank trending suggestions every few minutes without burdening the serving path. Edge servers maintain localized Redis/in-memory caches for the top 50,000 query prefixes, reducing origin queries by >85%.",
+    "follow_up_questions": [
+      "How do you handle personal search history versus global trending suggestions?",
+      "What defensive mechanisms protect against offensive or toxic completion suggestions?"
+    ]
+  },
+  {
+    "id": "comp-amzn-001",
+    "category": "Company Specific",
+    "topic": "Amazon - Leadership Principles (Customer Obsession & Bias for Action)",
+    "difficulty": "Medium",
+    "question": "Give an example of when you demonstrated 'Customer Obsession' and 'Bias for Action' to solve an urgent production incident where data was incomplete.",
+    "expected_concepts": ["STAR framework", "Customer-first mindset", "Calculated risk-taking", "Quick mitigation over long analysis", "Post-mortem & long-term preventative fix"],
+    "sample_answer": "When our payment gateway intermittently failed on Black Friday weekend, affecting 4% of checkout attempts, telemetry did not pinpoint whether the root cause was the third-party provider or our connection pool. With checkout drop-off climbing, I immediately enabled a dual-routing fallback to our secondary payment provider within 10 minutes rather than debugging production under fire. This restored checkout success to 99.9% within 2 minutes. Afterward, during the five-whys post-mortem, we uncovered a TCP keep-alive socket leak and implemented automated health-check routing.",
+    "follow_up_questions": [
+      "How did you validate that transactions were not charged twice during the switchover?",
+      "What was your communication strategy to affected customers?"
+    ]
+  }
+]
